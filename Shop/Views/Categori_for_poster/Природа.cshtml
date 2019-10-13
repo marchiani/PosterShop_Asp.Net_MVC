@@ -1,0 +1,8 @@
+﻿@model Shop.Models.ShopModel.IndexViewModel
+@{
+    ViewBag.Title = "Природа";
+    Layout = "~/Views/Shared/_LayoutForShop.cshtml";
+}
+@using Shop.Helpers
+
+@Html.PageLinks(Model.PageInfo, x => Url.Action("Природа", new { page = x }))
