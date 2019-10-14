@@ -1,0 +1,51 @@
+﻿body {
+
+}
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap');
+.left-menu {
+    box-shadow: 3px 0 10px 0 rgba(0,0,0,0.6);
+    height: device-height;
+    
+}
+.category-wrap h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+    color: rgba(0,0,0,.8);
+    margin: 10px 0 10px;
+    padding: 0 5px;
+    position: relative;
+}
+
+.category-wrap ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; 
+    border-top: 1px solid rgba(0,0,0,.6);
+}
+.category-wrap li {margin: 12px 0 0 0px;}
+.category-wrap a {
+    font-family: 'Merriweather', serif;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    color: rgba(0,0,0,.6);
+    padding: 3px;
+    position: relative;
+}
+.category-wrap a:after {
+    content: "\f18e";
+    font-family: FontAwesome;
+    position: absolute;
+    right: 5px;
+    color: white;
+    transition: .2s linear;
+}
+    .category-wrap a:hover {
+        text-decoration: underline;
+        color: rgba(0,0,0,0.9);
+    }
+
+.product-link {
+    color: rgba(0, 0, 0, 0.4);
+    background-color: red;
+}

@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_LayoutForShop</title>
+</head>
+<body>
+    @model Shop.Models.ShopModel.IndexViewModel
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @using Shop.Helpers
+    @Scripts.Render("~/Scripts/OwnScripts/JavaScript.js")
+    @Styles.Render("~/Content/MyCss.css");
+    <style>
+
+        .product-link {
+            text-decoration: none;
+            font-family: 'Merriweather', serif;
+            display: block;
+            font-size: 18px;
+            color: rgba(0,0,0,0.6);
+            padding: 3px;
+            position: relative;
+        }
+        .btnPoster {
+            display: block;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 col-sm-4 left-menu bg-light">
+                <div class="category-wrap ">
+                    <h3>Категории постеров</h3>
+
+
+                    <div class="">
+                        <ul class="">
+                            @foreach (var b in Model.Categories)
+                            {
+                                <li class="nav-item"><a href="../Categori_for_poster/@b.name">@b.name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <ul class="posters col-lg-10 col-md-9 col-sm-8 row">
+                @{
+                    int PosterNumber = 0;
+                }
+                @foreach (var p in Model.Products)
+                {
+
+                    <li class="product col-lg-3 col-md-4 col-sm-6 " style="margin-top: 30px;">
+                        <img src="@p.srcImg" alt="" class="img-product d-block  m-auto"/>
+                        <h4 class="heading text-center">@p.heading</h4>
+                        <p class="Categori text-center">@p.Categoriesname</p>
+                        <h4 class="price text-center">@p.Price грн</h4>
+                        <button  class="btn btn-success  m-auto  btnPoster"  id="@p.heading" onclick="posterButton(ids = @p.heading, idss = @p.id)">Choose size</button>
+                        
+                        
+                        <div id="@p.id" style="display: none">
+                            @using (Html.BeginForm())
+                            {
+                                <input type="hidden" name="ProductId" value="@p.id"/>
+                                <div class="form-group">
+                                    <select class="form-control" id="exampleFormControlSelect1" name="Size">
+                                        <option value="A0"><bold>А0</bold> – 841х1189</option>
+                                        <option value="A1"><bold>А1</bold> – 594х841</option>
+                                        <option value="A2"><bold>А2</bold> – 420х594</option>
+                                        <option value="A3" selected><bold>А3</bold> – 297х420</option>
+                                        <option value="A4"><bold>А4</bold> – 210х297</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-success">Добавить в карзину</button>
+                            }
+                        </div>
+                        
+                        
+                        @*<div id="@PosterNumber">
+                            @using (Ajax.BeginForm("CountPoster", "PosterShop", new AjaxOptions
+                            {
+                                UpdateTargetId = $"{PosterNumber}"
+                            }))
+                            {
+                                <button type="submit" class="btn btn-success m-auto d-flex" onclick="">Choose size</button>
+                            }
+
+                        </div>
+                        @{
+                            PosterNumber++;
+                        }*@
+                        <a class="bg-light product-link text-center " href="/PosterShop/AddProduxtToDatabase/@p.id">Buy</a>
+                    </li>
+                }
+
+
+
+            </ul>
+
+            <div class="btn-group offset-2 row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

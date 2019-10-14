@@ -1,0 +1,13 @@
+﻿@model Shop.Models.ShopModel.IndexViewModel
+@using Shop.Helpers
+@{
+    ViewBag.Title = "Poster Shop";
+    Layout = "~/Views/Shared/_LayoutForShop.cshtml";
+}
+
+
+@Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+
+
+
+

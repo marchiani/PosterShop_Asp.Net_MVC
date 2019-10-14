@@ -1,0 +1,65 @@
+﻿@model Shop.Models.ShopModel.Product
+
+@{
+    ViewBag.Title = "AddPosters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="" style="margin-left: 100px;">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4 class="text-center"></h4>
+                @using (Html.BeginForm("AddPosters", "Account", new { @class = "form-control" }))
+                {
+                    @Html.TextBoxFor(t => t.heading, new { @class = "form-control ", placeholder = "Заголовок к посту" })
+                    <br />
+                    @Html.TextBoxFor(t => t.srcImg, new { @class = "form-control text-center", @Value = "/Content/img/Posters/Кухня/1.jpg", placeholder = "Путь к постеру",  })
+                    <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <br />
+                    @Html.TextBoxFor(t => t.Price, new { @class = "form-control text-center", placeholder = "Цена постера" })
+                    <br />
+                    @Html.TextBoxFor(t => t.Categoriesname, new { @class = "form-control text-center", placeholder = "Название категории" })
+                    <br />
+                    <button class="btn btn-primary mr-auto" type="submit">Save</button>
+                }
+            </div>
+            <div class="col-lg-2 form">
+
+                @using (Ajax.BeginForm("PosterSearch", new AjaxOptions
+                {
+                    UpdateTargetId = "results"
+                }))
+                {
+                    <input type="text" name="name" placeholder="Введи имя постера " />
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-info">Search</button>
+                }
+            </div>
+
+            <div class="col-lg-1">
+                @using (Ajax.BeginForm("AllPoster", new AjaxOptions
+                {
+                    UpdateTargetId = "results"
+                }))
+                {
+                    <button type="submit" class="btn btn-info">Все размеры постеры</button>
+                }
+            </div>
+            <div class="col-lg-2">
+                @using (Ajax.BeginForm("AllCategories", new AjaxOptions
+                {
+                    UpdateTargetId = "AllCategories"
+                }))
+                {
+                    <button type="submit" class="btn btn-success">Все категории</button>
+                }
+                <div id="AllCategories"></div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+
+        <div id="results"></div>
+    </div>

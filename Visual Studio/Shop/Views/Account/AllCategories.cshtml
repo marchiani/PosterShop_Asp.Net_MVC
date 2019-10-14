@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Shop.Models.ShopModel.Categories>
+
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+    </tr>
+}
+
+</table>
