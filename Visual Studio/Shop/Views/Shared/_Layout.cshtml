@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Activities.DurableInstancing
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -6,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/MyCss.css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/animate.css")
@@ -40,30 +43,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav ml-auto d-flex justify-content-end col-auto ">
-                @*<li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdown" onclick="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Постеры
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item " href="#" id="">Супергерои</a>
-                        <a class="dropdown-item " href="#" id="">Фильмы</a>
-                        <div class="dropdown-divider " id=""></div>
-                        <a class="dropdown-item " href="#" id="">Для дома</a>
-                    </div>
-                </li>*@
+
                 <li class="nav-item ">
-                    <a class="nav-link  " onclick="" href="../PosterShop/case_for_phone" id="">Чехлы для телефона</a>
+                    <a class="nav-link  " onclick="" href="../PosterShop/Index" id="">Все постеры</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link animated btnSale" style="font-weight: bold;" onclick="" onmouseover="buttonss()" onmouseout="bttonsRemove()" href="../PosterShop/SALE" id="">SALE $</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link   " sssss href="../PosterShop/T_shirts" id="">Футболки</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link animated btnSale   " onclick="" onmouseover="buttonss()" onmouseout="bttonsRemove()" style="color: fuchsia" href="../PosterShop/SALE" id="">SALE $</a>
+                    <a class="nav-link animated basketAnimated" href="/PosterShop/shopBasket">Корзина</a>
                 </li>
                 <li style="border-right: 1px solid grey;"></li>
                 <li class="nav-item">
-                    <a class="nav-link animated basketAnimated" href="/PosterShop/shopBasket">Baskets</a>
+                    <a class="nav-link animated basketAnimated" href="~/Account/AddPosters">Админ</a>
                 </li>
                 <li>
 
@@ -78,14 +73,41 @@
 
     </nav>
 
-    <div class="mine-body">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+<div class="mine-body">
+    @RenderBody()
+    <hr />
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
 
+                    <h1 class="logo-brand-poster-shop">PMN.</h1>
+                </div>
+
+                <div class="col-3">
+                    <p class="text-center"> +38 097 87 16 905</p>
+                </div>
+
+                <div class="col-3">
+                    
+                    <p class="text-center"> marchiani22@gmail.com</p>
+                    
+                    
+                </div>
+                
+                <div class="col-3 text-right">
+                    <a href="https://www.instagram.com/postermania17/" class="sociallink" style="    text-decoration: none; color: rgba(0,0,0,0.7); margin-right: 15px;"><i class="fab fa-instagram socialFA" style="font-size: 30px;"></i></a>
+                    <a href="https://twitter.com/postermania17" class="sociallink" style="    text-decoration: none; color: rgba(0,0,0,0.7); margin-right: 15px;"><i class="fab fa-twitter socialFA " style="font-size: 30px;"></i></a>
+                    <a href="https://ru-ru.facebook.com/postermania17/" class="sociallink" style="text-decoration: none; color: rgba(0,0,0,0.7); margin-right: 50px;"><i class="fab fa-facebook-f socialFA" style="font-size: 30px;"></i></a>
+
+                </div>
+            </div>
+
+        </div>
+    </footer>
+</div>
+<script src="https://kit.fontawesome.com/3b7f2bc3c1.js" crossorigin="anonymous"></script>
+    @Scripts.Render("~/Scripts/wow.min.js");
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     @Scripts.Render("~/bundles/bootstrap")

@@ -31,86 +31,84 @@
         }
         .btnPoster {
             display: block;
+            border: 2px solid rgba(0,0,0,0.7)
+        }
+        .btnPoster:hover {
+            border: 2px solid rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: azure;
         }
     </style>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-lg-2 col-sm-4 left-menu bg-light">
-                <div class="category-wrap ">
-                    <h3>Категории постеров</h3>
+<div class="container-fluid" >
+    <div class="row" >
+        <div class="col-md-3 col-lg-2 col-sm-4 left-menu bg-light" >
+            <div class="category-wrap " >
+                <h3>Категории постеров</h3>
 
 
-                    <div class="">
-                        <ul class="">
-                            @foreach (var b in Model.Categories)
-                            {
-                                <li class="nav-item"><a href="../Categori_for_poster/@b.name">@b.name</a></li>
-                            }
-                        </ul>
-                    </div>
+                <div class="">
+                    <ul class="">
+                        @foreach (var b in Model.Categories)
+                        {
+                            <li class="nav-item"><a href="../Categori_for_poster/@b.name">@b.name</a></li>
+                        }
+                    </ul>
                 </div>
             </div>
+        </div>
 
 
-            <ul class="posters col-lg-10 col-md-9 col-sm-8 row">
-                @{
-                    int PosterNumber = 0;
-                }
-                @foreach (var p in Model.Products)
-                {
+        <ul class="posters col-lg-10 col-md-9 col-sm-8 row">
+            @{
+                int PosterNumber = 0;
+                double Seconds = 1;
+            }
+            @foreach (var p in Model.Products)
+            {
 
-                    <li class="product col-lg-3 col-md-4 col-sm-6 " style="margin-top: 30px;">
-                        <img src="@p.srcImg" alt="" class="img-product d-block  m-auto"/>
-                        <h4 class="heading text-center">@p.heading</h4>
-                        <p class="Categori text-center">@p.Categoriesname</p>
-                        <h4 class="price text-center">@p.Price грн</h4>
-                        <button  class="btn btn-success  m-auto  btnPoster"  id="@p.heading" onclick="posterButton(ids = @p.heading, idss = @p.id)">Choose size</button>
+                <li class="product col-lg-3 col-md-4 col-sm-6 wow fadeInUp" style="margin: 30px 60px 30px 60px;  "  data-wow-duration="2s" data-wow-delay="@Seconds">
+                    <img src="@p.srcImg" alt="" class="img-product d-block  m-auto"/>
+                    <h4 class="heading text-center">@p.heading</h4>
+                    <p class="Categori text-center">@p.Categoriesname</p>
+                    <h4 class="price text-center">@p.Price грн</h4>
+                    <button  class="btn btn-light  m-auto  btnPoster"  id="@p.heading" onclick="posterButton(ids = @p.heading, idss = @p.id)">Выберите размер</button>
                         
                         
-                        <div id="@p.id" style="display: none">
-                            @using (Html.BeginForm())
-                            {
-                                <input type="hidden" name="ProductId" value="@p.id"/>
-                                <div class="form-group">
-                                    <select class="form-control" id="exampleFormControlSelect1" name="Size">
-                                        <option value="A0"><bold>А0</bold> – 841х1189</option>
-                                        <option value="A1"><bold>А1</bold> – 594х841</option>
-                                        <option value="A2"><bold>А2</bold> – 420х594</option>
-                                        <option value="A3" selected><bold>А3</bold> – 297х420</option>
-                                        <option value="A4"><bold>А4</bold> – 210х297</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-success">Добавить в карзину</button>
-                            }
-                        </div>
-                        
-                        
-                        @*<div id="@PosterNumber">
-                            @using (Ajax.BeginForm("CountPoster", "PosterShop", new AjaxOptions
-                            {
-                                UpdateTargetId = $"{PosterNumber}"
-                            }))
-                            {
-                                <button type="submit" class="btn btn-success m-auto d-flex" onclick="">Choose size</button>
-                            }
-
-                        </div>
-                        @{
-                            PosterNumber++;
-                        }*@
-                        <a class="bg-light product-link text-center " href="/PosterShop/AddProduxtToDatabase/@p.id">Buy</a>
-                    </li>
-                }
+                    <div id="@p.id" style="display: none">
+                        @using (Html.BeginForm())
+                        {
+                            <input type="hidden" class="" name="ProductId" value="@p.id"/>
+                            <div class="form-group " style="margin-top: 20px; ">
+                                <select class="form-control m-auto" id="exampleFormControlSelect1" name="Size" style="margin-top: 20px; margin-bottom: 10px; display: block;">
+                                    <option value="A0"><bold>А0</bold> – 841х1189</option>
+                                    <option value="A1"><bold>А1</bold> – 594х841</option>
+                                    <option value="A2"><bold>А2</bold> – 420х594</option>
+                                    <option value="A3" selected><bold>А3</bold> – 297х420</option>
+                                    <option value="A4"><bold>А4</bold> – 210х297</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn m-auto  btnPoster">Добавить в карзину</button>
+                        }
+                    </div>
+                    @{ Seconds += 0.2; }
+                </li>
+                
+            }
 
 
 
-            </ul>
+        </ul>
 
-            <div class="btn-group offset-2 row">
-                @RenderBody()
-            </div>
+        <div class="btn-group offset-2 row">
+            @RenderBody()
         </div>
     </div>
+</div>
+<script src="~/Scripts/wow.min.js">
+</script>
+<script>
+    new WOW().init();
+</script>
 </body>
 </html>

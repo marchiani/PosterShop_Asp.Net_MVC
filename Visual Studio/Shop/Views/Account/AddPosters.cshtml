@@ -8,20 +8,21 @@
     <div class="" style="margin-left: 100px;">
         <div class="row">
             <div class="col-lg-4">
-                <h4 class="text-center"></h4>
-                @using (Html.BeginForm("AddPosters", "Account", new { @class = "form-control" }))
-                {
-                    @Html.TextBoxFor(t => t.heading, new { @class = "form-control ", placeholder = "Заголовок к посту" })
-                    <br />
-                    @Html.TextBoxFor(t => t.srcImg, new { @class = "form-control text-center", @Value = "/Content/img/Posters/Кухня/1.jpg", placeholder = "Путь к постеру",  })
-                    <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    <br />
-                    @Html.TextBoxFor(t => t.Price, new { @class = "form-control text-center", placeholder = "Цена постера" })
-                    <br />
-                    @Html.TextBoxFor(t => t.Categoriesname, new { @class = "form-control text-center", placeholder = "Название категории" })
-                    <br />
-                    <button class="btn btn-primary mr-auto" type="submit">Save</button>
-                }
+                <div class="">
+                    <h4 class="text-center"></h4>
+                    @using (Html.BeginForm("AddPosters", "Account", new { @class = "form-control" }))
+                    {
+                        @Html.TextBoxFor(t => t.heading, new { @class = "form-control ", placeholder = "Заголовок к посту" })
+                        <br />
+                        @Html.TextBoxFor(t => t.srcImg, new { @class = "form-control text-center", @Value = "/Content/img/Posters/Кухня/1.jpg", placeholder = "Путь к постеру", })
+                        <br />
+                        @Html.TextBoxFor(t => t.Price, new { @class = "form-control text-center", placeholder = "Цена постера" })
+                        <br />
+                        @Html.TextBoxFor(t => t.Categoriesname, new { @class = "form-control text-center", placeholder = "Название категории" })
+                        <br />
+                        <button class="btn btn-primary " type="submit">Сохранить постер</button>
+                    }
+                </div>
             </div>
             <div class="col-lg-2 form">
 
@@ -43,7 +44,7 @@
                     UpdateTargetId = "results"
                 }))
                 {
-                    <button type="submit" class="btn btn-info">Все размеры постеры</button>
+                    <button type="submit" class="btn btn-info">Все постеры</button>
                 }
             </div>
             <div class="col-lg-2">
@@ -55,6 +56,15 @@
                     <button type="submit" class="btn btn-success">Все категории</button>
                 }
                 <div id="AllCategories"></div>
+            </div>
+            <div class="col-lg-2">
+                @using (Ajax.BeginForm("CRM", new AjaxOptions
+                {
+                    UpdateTargetId = "results"
+                }))
+                {
+                    <button type="submit" class="btn btn-info">Все заказы</button>
+                }
             </div>
         </div>
         <br />

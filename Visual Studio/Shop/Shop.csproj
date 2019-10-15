@@ -334,6 +334,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -373,7 +374,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\PosterShop\Order.cshtml" />
     <Content Include="Views\Shared\_LayoutForShop.cshtml" />
-    <Content Include="Views\Account\CRM.cshtml" />
     <Content Include="Views\Account\DeleteProduct.cshtml" />
     <Content Include="Views\Account\CustomerSerch.cshtml" />
     <Content Include="Views\Account\PosterSearch.cshtml" />
@@ -381,6 +381,7 @@
     <Content Include="Views\Account\AllCategories.cshtml" />
     <Content Include="Views\PosterShop\CountPoster.cshtml" />
     <Content Include="Views\Account\AllOrder.cshtml" />
+    <Content Include="Views\Account\CRM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\Posters\Путешествия\" />

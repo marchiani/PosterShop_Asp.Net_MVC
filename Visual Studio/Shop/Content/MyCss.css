@@ -49,3 +49,18 @@
     color: rgba(0, 0, 0, 0.4);
     background-color: red;
 }
+
+.sociallink {
+    text-decoration: none;
+    color: rgba(0,0,0,0.7);
+    margin-right: 15px;
+}
+.sociallink:hover {
+    text-decoration: none;
+    color: rgba(0,0,0,1);
+}
+
+.s
+.socialFA {
+    font-size: 30px;
+}

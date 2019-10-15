@@ -90,8 +90,11 @@ namespace Shop.Controllers
 
 
 
-
-
+        public ActionResult CRM()
+        {
+            var order = db.Orders.ToList();
+            return View(order);
+        }
 
 
 
@@ -149,6 +152,7 @@ namespace Shop.Controllers
 
             HttpPost]
             [ValidateAntiForgeryToken]
+            [Authorize]
             public ActionResult Register(Register model)
             {
                 if (ModelState.IsValid)

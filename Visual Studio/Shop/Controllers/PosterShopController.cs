@@ -21,7 +21,7 @@ namespace Shop.Controllers
         [HttpGet]
         public ActionResult Index(int page=1)
         {
-            int pageSize = 3;
+            int pageSize = 12;
             var categories = db.Categorieses.ToList();
             IEnumerable<Product> productPerPages = db.Products
                 .OrderBy(t => t.id)
@@ -55,16 +55,6 @@ namespace Shop.Controllers
 
             return PartialView();
         }
-
-
-
-
-
-
-
-
-
-
 
 
 
